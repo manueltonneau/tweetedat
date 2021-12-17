@@ -22,4 +22,4 @@ singularity exec --overlay /scratch/mt4493/twitter_labor/code/envs/singularity/i
 	    /scratch/work/public/singularity/cuda11.1-cudnn8-devel-ubuntu18.04.sif \
 	    /bin/bash -c "source /ext3/env.sh; python3 /scratch/mt4493/twitter_labor/code/tweetedat/script/estimate_timestamps.py \
 --random_sample_path ${RANDOM_SAMPLE_PATH} \
---output_filename ${OUTPUT_FILENAME}
+--output_filename ${OUTPUT_FILENAME}"
