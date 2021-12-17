@@ -1,9 +1,9 @@
 #!/bin/bash
 
-#SBATCH --job-name=exploitation
+#SBATCH --job-name=get_timestamp
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=1
-#SBATCH --mem=500GB
+#SBATCH --mem=100GB
 #SBATCH --time=24:00:00
 #SBATCH --gres=gpu:0
 #SBATCH --mail-type=BEGIN
