@@ -4,6 +4,7 @@ import argparse
 import pandas as pd
 from pathlib import Path
 from datetime import datetime
+from tqdm import tqdm
 
 logging.basicConfig(format='%(asctime)s - %(levelname)s - %(name)s -   %(message)s',
                     datefmt='%m/%d/%Y %H:%M:%S',
@@ -30,7 +31,7 @@ def main():
     df = pd.concat([pd.read_parquet(path) for path in Path(args.random_sample_path).glob('*.parquet')])
     logger.info('Scores loaded')
     df['tweet_id'] = df['tweet_id'].astype(int)
-    df['datetime'] = df['tweet_id'].apply(get_timestamp_from_tweet_id)
+    df['datetime'] = df['tweet_id'].progress_apply(get_timestamp_from_tweet_id)
     df.to_parquet(f'/scratch/spf248/twitter/data/random_samples/random_samples_splitted/{args.output_filename}.parquet', index=False)
 
 if __name__ == '__main__':
