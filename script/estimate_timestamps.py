@@ -29,7 +29,7 @@ def get_timestamp_from_tweet_id(tweet_id):
 def main():
     args = get_args_from_command_line()
     df = pd.concat([pd.read_parquet(path) for path in Path(args.random_sample_path).glob('*.parquet')])
-    logger.info('Scores loaded')
+    logger.info('Tweets loaded')
     df['tweet_id'] = df['tweet_id'].astype(int)
     df['datetime'] = df['tweet_id'].progress_apply(get_timestamp_from_tweet_id)
     df.to_parquet(f'/scratch/spf248/twitter/data/random_samples/random_samples_splitted/{args.output_filename}.parquet', index=False)
